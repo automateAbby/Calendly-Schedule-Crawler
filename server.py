@@ -72,7 +72,7 @@ async def schedule(schedule_data: Schedule):
     submit_button = browser.find_element(By.CSS_SELECTOR,"button[type='submit']")
     submit_button.click()
     browser.implicitly_wait(20)
-    timeUnavaible = browser.find_element(By.CLASS_NAME, 'GCU_HdYN_MSGsWKKaGxX')[0];
+    timeUnavaible = browser.find_element(By.CLASS_NAME, 'GCU_HdYN_MSGsWKKaGxX');
 
     if(timeUnavaible.is_displayed()):
         browser.quit()
