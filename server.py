@@ -65,12 +65,15 @@ async def schedule(schedule_data: Schedule):
     email = schedule_data.email
     name = schedule_data.name
     url = schedule_data.url
-    browser.get(url)
-    browser.find_element(By.ID, "email_input").send_keys(email)
-    browser.find_element(By.ID,"full_name_input").send_keys(name)
-    submit_button = browser.find_element(By.CSS_SELECTOR,"button[type='submit']")
-    submit_button.click()
-    return 'SUCCESS'
+    try:
+        browser.get(url)
+        browser.find_element(By.ID, "email_input").send_keys(email)
+        browser.find_element(By.ID,"full_name_input").send_keys(name)
+        submit_button = browser.find_element(By.CSS_SELECTOR,"button[type='submit']")
+        submit_button.click()
+    except:
+        browser.quit()
+    
 
 if __name__ == "__main__":
 	uvicorn.run(app, host='0.0.0.0', port=os.environ.get('PORT', '5000'))
