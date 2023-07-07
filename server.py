@@ -72,7 +72,7 @@ async def schedule(schedule_data: Schedule):
     submit_button = browser.find_element(By.CSS_SELECTOR,"button[type='submit']")
     submit_button.click()
     browser.quit()
-    
+    return 'passed'
 
 if __name__ == "__main__":
 	uvicorn.run(app, host='0.0.0.0', port=os.environ.get('PORT', '5000'))
