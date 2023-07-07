@@ -71,8 +71,15 @@ async def schedule(schedule_data: Schedule):
     browser.find_element(By.ID,"full_name_input").send_keys(name)
     submit_button = browser.find_element(By.CSS_SELECTOR,"button[type='submit']")
     submit_button.click()
-    browser.quit()
-    return 'passed'
+    browser.implicitly_wait(20)
+    timeUnavaible = browser.find_element(By.CLASS_NAME, 'GCU_HdYN_MSGsWKKaGxX')[0];
+
+    if(timeUnavaible.is_displayed()):
+        browser.quit()
+        return 'unavailable'
+    else:
+        browser.quit()
+        return 'passed'
 
 if __name__ == "__main__":
 	uvicorn.run(app, host='0.0.0.0', port=os.environ.get('PORT', '5000'))
