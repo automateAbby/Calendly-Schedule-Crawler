@@ -71,9 +71,9 @@ async def schedule(schedule_data: Schedule):
         browser.find_element(By.ID,"full_name_input").send_keys(name)
         submit_button = browser.find_element(By.CSS_SELECTOR,"button[type='submit']")
         submit_button.click()
-	print('success')
+        print('success')
     except:
-	print('error encountered')
+        print('error encountered')
         browser.quit()
     
 
