@@ -90,7 +90,7 @@ async def schedule(schedule_data: Schedule):
     browser.implicitly_wait(15)
     browser.find_element(By.ID, "email_input").send_keys(email)
     browser.find_element(By.ID,"full_name_input").send_keys(name)
-    return browser.getCurrentUrl()
+    return browser.current_url
 
 if __name__ == "__main__":
 	uvicorn.run(app, host='0.0.0.0', port=os.environ.get('PORT', '5000'))
