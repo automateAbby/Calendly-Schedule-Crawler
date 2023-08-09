@@ -1,1 +1,1 @@
-web: gunicorn server:app --workers 4 -k uvicorn.workers.UvicornWorker --preload --timeout 60
+web: gunicorn server:app --workers 4 -k uvicorn.workers.UvicornWorker --preload --timeout 60 --reload
