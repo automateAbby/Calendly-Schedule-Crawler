@@ -75,7 +75,7 @@ async def schedule(schedule_data: Schedule):
     browser.implicitly_wait(20)
     
     try:
-	    timeUnavaible = browser.find_element(By.CLASS_NAME, 'GCU_HdYN_MSGsWKKaGxX');
+	    timeUnavaible = browser.find_element(By.CLASS_NAME, 'c16ww8p5');
 	    browser.quit()
 	    return 'unavailable'
     except NoSuchElementException:
