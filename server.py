@@ -10,6 +10,7 @@ from pydantic import BaseModel
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+from selenium.common.exceptions import NoSuchElementException 
 import os
 
 chrome_options = webdriver.ChromeOptions()
@@ -72,12 +73,13 @@ async def schedule(schedule_data: Schedule):
     submit_button = browser.find_element(By.CSS_SELECTOR,"button[type='submit']")
     submit_button.click()
     browser.implicitly_wait(20)
-    timeUnavaible = browser.find_element(By.CLASS_NAME, 'GCU_HdYN_MSGsWKKaGxX');
-
-    if(timeUnavaible.is_displayed()):
-        browser.quit()
+    
+    try:
+	timeUnavaible = browser.find_element(By.CLASS_NAME, 'GCU_HdYN_MSGsWKKaGxX');
+	browser.quit()
         return 'unavailable'
-    else:
+    except NoSuchElementException:
+    	print("Element is not found")
         browser.quit()
         return 'passed'
 	    
